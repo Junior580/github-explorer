@@ -1,5 +1,6 @@
 import { useState, FormEvent, useCallback, useEffect } from 'react'
 import { Title, Form, Repositories, Error } from './style'
+import { Link } from 'react-router-dom'
 import { FiChevronRight } from 'react-icons/fi'
 import api from '../../services/api'
 import logoImg from '../../assets/logo.svg'
@@ -50,6 +51,7 @@ const Dashboard: React.FC = () => {
       const response = await api.get<IRepository>(`repos/${newRepo}`)
 
       const repository = response.data
+      console.log(response.data)
 
       setRepositories([...repositories, repository])
 
@@ -80,7 +82,12 @@ const Dashboard: React.FC = () => {
 
       <Repositories>
         {repositories.map(repository => (
-          <a key={repository.full_name} href="/">
+          <Link
+            key={repository.full_name}
+            to={`/repositories/${repository.full_name.split('/')[0]}/${
+              repository.full_name.split('/')[1]
+            }`}
+          >
             <img
               src={repository.owner.avatar_url}
               alt={repository.owner.login}
@@ -90,7 +97,7 @@ const Dashboard: React.FC = () => {
               <p>{repository.description}</p>
             </div>
             <FiChevronRight size={20} />
-          </a>
+          </Link>
         ))}
       </Repositories>
     </>

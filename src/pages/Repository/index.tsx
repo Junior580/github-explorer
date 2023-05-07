@@ -1,7 +1,14 @@
+import { useResolvedPath } from 'react-router-dom'
+
+interface IRepositoryParams {
+  repository: string
+}
+
 const Repository: React.FC = () => {
+  const { pathname } = useResolvedPath('')
   return (
     <>
-      <h1>Repository</h1>
+      <h1>Repository:{pathname}</h1>
     </>
   )
 }

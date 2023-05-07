@@ -7,7 +7,10 @@ const AppRoutes: React.FC = () => {
   return (
     <Routes>
       <Route path="/" Component={Dashboard} />
-      <Route path="/repository" Component={Repository} />
+      <Route
+        path="/repositories/:repositoryUser/:repository"
+        Component={Repository}
+      />
     </Routes>
   )
 }
