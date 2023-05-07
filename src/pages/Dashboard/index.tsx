@@ -16,7 +16,18 @@ interface IRepository {
 const Dashboard: React.FC = () => {
   const [newRepo, setNewRepo] = useState('')
   const [inputError, setInputError] = useState('')
-  const [repositories, setRepositories] = useState<IRepository[]>([])
+
+  const [repositories, setRepositories] = useState<IRepository[]>(() => {
+    const storageRepositories = localStorage.getItem(
+      '@GihubExplorer:repositories',
+    )
+
+    if (storageRepositories) {
+      return JSON.parse(storageRepositories)
+    } else {
+      return []
+    }
+  })
 
   useEffect(() => {
     localStorage.setItem(
