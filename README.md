@@ -10,3 +10,25 @@
 - Typescript
 - React router dom
 - Styled components
+
+### Prerequisites
+
+**Node version 18.x**
+
+### Cloning the repository
+
+```shell
+git clone https://github.com/Junior580/github-explorer.git
+```
+
+### Install packages
+
+```shell
+npm i
+```
+
+### Start the app
+
+```shell
+npm run dev
+```
