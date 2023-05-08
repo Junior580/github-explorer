@@ -37,7 +37,6 @@ const Repository: React.FC = () => {
 
   useEffect(() => {
     api.get(`repos/${pathUrl}`).then(response => {
-      console.log(response)
       setRepository(response.data)
     })
 
